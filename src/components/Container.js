@@ -63,8 +63,6 @@ export default function Container () {
 
     cushions.push(...veganCushions);
 
-    console.log("Cushions Check", cushions);
-
     const shopifyData = {
         cushions,
         placemats,
