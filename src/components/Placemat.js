@@ -19,10 +19,10 @@ export default function Placemat ({ placemat }) {
                     </defs>
 
                     {/* Draw the image clipped to the frame shape */}
-                    <image xlinkHref={placemat.metafields.placemat_image_src} x="50%" y="44%" width="44%" height="8%" preserveAspectRatio="xMidYMid slice" clip-path="url(#placemat-clip)"></image>
+                    <image xlinkHref={placemat.metafields.placemat_image_src} x="50%" y="44%" width="44%" height="8%" preserveAspectRatio="xMidYMid slice" clipPath="url(#placemat-clip)"></image>
 
                     {/* Draw the frame on top of the image */}
-                    <use xlinkHref="#frame-path" class="frame"></use>
+                    <use xlinkHref="#frame-path" className="frame"></use>
                     <img src={Shadow} alt="" className={styles.shadow} />
                 </svg>
             </div>
