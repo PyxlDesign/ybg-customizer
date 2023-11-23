@@ -121,12 +121,15 @@ function onlyAvailableItems (items) {
 export function getPlacematList (shopifyPlacemats) {
     const placematList = [];
     shopifyPlacemats.forEach(item => {
-        placematList.push({
-            thumbnail: item.images[0].replace('//', ''),
-            fillColorRGB: item.metafields?.placematcolor,
-            patternFill: item.metafields?.placemat_image !== undefined ? item.metafields?.placemat_image_src : "",
-            ...item
-        });
+        const placematImage = item.metafields?.placemat_image !== undefined ? item.metafields?.placemat_image_src : ""
+        if(placematImage !== "" || item.metafields?.placematcolor) {
+            placematList.push({
+                thumbnail: placematImage !== "" ? placematImage : item.images[0].replace('//', ''),
+                fillColorRGB: item.metafields?.placematcolor,
+                patternFill: placematImage,
+                ...item
+            });
+        }
     });
     const filteredList = onlyAvailableItems(placematList);
     // console.log('Unvail placemats', placematList.length - filteredList.length);

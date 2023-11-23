@@ -99,7 +99,7 @@ export default function OptionSelector ({
                 case 'cropped':
                     imageStyle = {
                         backgroundImage: `url(${ props.thumbnail })`,
-                        backgroundRosition: '50% 0%',
+                        backgroundPosition: '50% 0%',
                         backgroundSize: 'cover',
                         transform: 'scale(2.9)',
                         transformOrigin: '50% 20%'
@@ -112,8 +112,11 @@ export default function OptionSelector ({
                     break;
                 case 'fill':
                     imageStyle = {
-                        backgroundColor: `rgb(${ props.fillColorRGB })`
-                    };
+                        backgroundColor: `rgb(${ props?.fillColorRGB })`,
+                        backgroundImage: `url(${ props.thumbnail })`,
+                        backgroundPosition: '10% 0%',
+                        transform: 'scale(3)',
+                    }
                     break;
                 default:
                     imageStyle = {
@@ -146,7 +149,8 @@ export default function OptionSelector ({
                     id="thumb"
                     className={cn({
                         [styles.thumbContainer]: true,
-                        cropped: thumbStyle === 'cropped-local'
+                        cropped: thumbStyle === 'cropped-local',
+                        cropped: thumbStyle === 'fill' && props.thumbnail !== 'none'
                     })}
                     style={thumbContStyle}
                 >

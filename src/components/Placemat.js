@@ -28,6 +28,7 @@ export default function Placemat ({ placemat }) {
             </div>
         )
     }
+
     if(!placemat?.metafields?.placematcolor) {
         return null;
     }
