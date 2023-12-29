@@ -114,8 +114,8 @@ export default function OptionSelector ({
                     imageStyle = {
                         backgroundColor: `rgb(${ props?.fillColorRGB })`,
                         backgroundImage: `url(${ props.thumbnail })`,
-                        backgroundPosition: '10% 0%',
-                        transform: 'scale(3)',
+                        backgroundPosition: '10% 58%',
+                        backgroundSize: "560px"
                     }
                     break;
                 default:
@@ -150,7 +150,6 @@ export default function OptionSelector ({
                     className={cn({
                         [styles.thumbContainer]: true,
                         cropped: thumbStyle === 'cropped-local',
-                        cropped: thumbStyle === 'fill' && props.thumbnail !== 'none'
                     })}
                     style={thumbContStyle}
                 >
