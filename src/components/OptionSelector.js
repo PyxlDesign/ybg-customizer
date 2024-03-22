@@ -22,7 +22,6 @@ export default function OptionSelector ({
     const [showSearchModal, setShowSearchModal] = useState(false);
     const [filteredOptions, setFilteredOptions] = useState([]);
     const [optionsByTag, setOptionsByTag] = useState([]);
-
     if(property === 'cushion') {
         const leftArrow = useKeyPress('ArrowLeft');
         const rightArrow = useKeyPress('ArrowRight');
@@ -91,12 +90,12 @@ export default function OptionSelector ({
         let imageStyle = {};
         if(props.thumbnail === 'none') {
             imageStyle = {
-                backgroundImage: `url(${ require('../images/none-selected.png').default
-                    })`
+                backgroundImage: `url(${ require('../images/none-selected.png').default })`
             };
         } else {
             switch(thumbStyle) {
                 case 'cropped':
+                    console.log('CROPPED', props.thumbnail)
                     imageStyle = {
                         backgroundImage: `url(${ props.thumbnail })`,
                         backgroundPosition: '50% 0%',

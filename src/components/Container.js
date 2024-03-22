@@ -7,6 +7,7 @@ import { clearCart } from '../utils/api';
 
 export const CUSHION_TYPE = 'IKEA Cushion Cover';
 export const VEGAN_CUSHION_TYPE = 'Vegan Leather Cushion Cover';
+export const PATTERN_VEGAN_COVER_TYPE = 'Pattern Vegan Leather Cover';
 export const FOOTREST_TYPE = 'IKEA Footrest';
 export const LEG_WRAPS_TYPE = 'IKEA Leg Wraps';
 export const PLACEMAT_TYPE = 'IKEA Placemat';
@@ -61,7 +62,18 @@ export default function Container () {
         }
     }
 
+    const veganPatterns = []
+    for(const id in products) {
+        switch(products[id].type) {
+            case PATTERN_VEGAN_COVER_TYPE:
+                veganPatterns.push(products[id]);
+                break;
+        }
+    }
+
     cushions.push(...veganCushions);
+
+    cushions.push(...veganPatterns);
 
     const shopifyData = {
         cushions,
@@ -70,6 +82,8 @@ export default function Container () {
         footrests,
         floormats
     };
+
+    // console.log('shopifyData', shopifyData.cushions)
 
     const cushionInsert = shopifyData?.cushions.filter(
         item => item.title === 'Cushion Insert' && item.available === true

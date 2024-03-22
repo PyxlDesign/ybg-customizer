@@ -5,6 +5,7 @@ import { centsToDollars } from '../utils/money';
 import {
     CUSHION_TYPE,
     VEGAN_CUSHION_TYPE,
+    PATTERN_VEGAN_COVER_TYPE,
     FOOTREST_TYPE,
     LEG_WRAPS_TYPE,
     PLACEMAT_TYPE,
@@ -47,6 +48,12 @@ export default function Cart ({ options, cushionInsert, setOptions }) {
                 }
                 break;
             case VEGAN_CUSHION_TYPE:
+                if(item.title !== 'Cushion Insert') {
+                    configurationPrice += item.price;
+                    cartDisplayNames.CUSHION_TYPE = item.title;
+                }
+                break;
+            case PATTERN_VEGAN_COVER_TYPE:
                 if(item.title !== 'Cushion Insert') {
                     configurationPrice += item.price;
                     cartDisplayNames.CUSHION_TYPE = item.title;
